@@ -192,7 +192,7 @@ main() {
     configure_git
     setup_ssh
     test_connection
-    clone_repo
+    # clone_repo
     
     echo
     success "GitHub setup completed!"
