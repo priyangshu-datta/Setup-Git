@@ -9,7 +9,7 @@ set -e
 # Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
-YELLOW='\033 [0;33m'
+YELLOW='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
  
@@ -55,7 +55,7 @@ install_packages() {
                 sudo dnf install -y git curl
             elif command -v pacman &> /dev/null; then
                 log "Installing required packages (Arch)..."
-                sudo pacman -Sy --noconfirm git curl
+                sudo pacman -Syu --noconfirm git curl
             else
                 warn "Unsupported Linux package manager. Please install git and curl manually."
             fi
@@ -123,7 +123,7 @@ setup_ssh() {
     # Start SSH agent
     case $OS in
         Linux|macOS)
-            eval "$(ssh-agent -s)" > /dev/null
+            eval "$(ssh-agent -s 2>/dev/null)"
             ssh-add "$KEY_PATH" 2>/dev/null
             ;;
         Windows)
